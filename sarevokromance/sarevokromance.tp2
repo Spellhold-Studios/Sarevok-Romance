@@ -1,0 +1,193 @@
+// --------------------------------------
+// Sarevok Romance Setup
+//
+// Version:   V1.4
+// Author(s): Aeryn
+// --------------------------------------
+// Backup directory
+BACKUP ~sarevokromance/backup~
+
+// Error reports sent to K'aeloree
+AUTHOR ~kae@spellholdstudios.net~
+
+// Version
+VERSION ~1.4~
+
+// Readme
+README ~sarevokromance/sarevokromance_readme.html~
+
+// Translations
+AUTO_TRA ~sarevokromance/translations/%s~
+
+
+
+ALWAYS
+  // No exception, everything needs to be converted
+  ACTION_DEFINE_ARRAY SareRomnoconvert BEGIN END
+
+  // any tra files used in LANGUAGE need to be reloaded after UTF-8 conversion
+  ACTION_DEFINE_ARRAY SareRomreload BEGIN sarevokromance END
+
+  LAF HANDLE_CHARSETS
+    INT_VAR
+      infer_charsets = 1
+    STR_VAR
+      tra_path = EVAL ~%MOD_FOLDER%/Translations~
+      noconvert_array = SareRomnoconvert
+      reload_array = SareRomreload
+  END
+END
+
+
+
+LANGUAGE ~English~
+         ~English~
+         ~sarevokromance/translations/english/sarevokromance.tra~
+LANGUAGE ~Polish (by Astharoshe, member of SoM)~
+         ~Polish~
+         ~sarevokromance/translations/polish/sarevokromance.tra~
+LANGUAGE ~Russian (by HelenAzura, Dajdre, Larite & Arcanecoast.ru)~
+         ~Russian~
+         ~sarevokromance/translations/russian/sarevokromance.tra~
+
+// Component
+BEGIN @1
+  REQUIRE_PREDICATE GAME_IS ~tob bgt bg2ee eet~ @2
+
+
+// --------------------------------------
+// Ids
+// --------------------------------------
+// Add custom IVFPD state
+APPEND ~state.ids~
+  ~0x80101FEF CD_STATE_NOTVALID~
+  UNLESS ~CD_STATE_NOTVALID~
+  
+  
+// --------------------------------------
+// Alterations to existing dialogues
+// --------------------------------------
+// Change trigger in existing talks
+COPY_EXISTING ~bsarev25.dlg~ ~override~
+  DECOMPILE_DLG_TO_D
+    REPLACE_TEXTUALLY ~See(Player1)
+!StateCheck(Player1,STATE_SLEEPING)
+Global("ExpBSarevok10","GLOBAL",0)~
+            ~Global("ExpBSarevok10","GLOBAL",0) See(Player1) !StateCheck(Player1,STATE_SLEEPING) !Global("LS#SarevokRomanceActive","GLOBAL",1) !Global("LS#SarevokRomanceActive","GLOBAL",2)~
+    REPLACE_TEXTUALLY ~See(Player1)
+!StateCheck(Player1,STATE_SLEEPING)
+Global("ExpBSarevok10","GLOBAL",1)~
+            ~Global("ExpBSarevok10","GLOBAL",1) See(Player1) !StateCheck(Player1,STATE_SLEEPING) !Global("LS#SarevokRomanceActive","GLOBAL",1) !Global("LS#SarevokRomanceActive","GLOBAL",2)~
+    REPLACE_TEXTUALLY ~See(Player1)
+!StateCheck(Player1,STATE_SLEEPING)
+Global("ExpBSarevok10","GLOBAL",2)~
+            ~Global("ExpBSarevok10","GLOBAL",2) See(Player1) !StateCheck(Player1,STATE_SLEEPING) !Global("LS#SarevokRomanceActive","GLOBAL",1) !Global("LS#SarevokRomanceActive","GLOBAL",2)~
+    REPLACE_TEXTUALLY ~See(Player1)
+!StateCheck(Player1,STATE_SLEEPING)
+!Alignment("Sarevok",MASK_EVIL)
+Global("ExpBSarevok10","GLOBAL",3)~
+            ~Global("ExpBSarevok10","GLOBAL",3) See(Player1) !StateCheck(Player1,STATE_SLEEPING) !Alignment("Sarevok",MASK_EVIL) !Global("LS#SarevokRomanceActive","GLOBAL",1) !Global("LS#SarevokRomanceActive","GLOBAL",2)~
+  COMPILE_D_TO_DLG
+BUT_ONLY_IF_IT_CHANGES
+
+// Changing Solar's talk for Sarevok
+COPY_EXISTING ~finsol01.dlg~ ~override~
+              ~keldo25j.dlg~ ~override~
+              ~korga25j.dlg~ ~override~
+              ~edwin25j.dlg~ ~override~
+              ~mazzy25j.dlg~ ~override~
+              ~cernd25j.dlg~ ~override~
+              ~jan25j.dlg~   ~override~
+              ~haerd25j.dlg~ ~override~
+              ~nalia25j.dlg~ ~override~
+              ~minsc25j.dlg~ ~override~
+  DECOMPILE_DLG_TO_D
+    REPLACE_TEXTUALLY ~IsValidForPartyDialog("Sarevok")
+!Alignment("Sarevok",MASK_EVIL)~
+            ~IsValidForPartyDialog("Sarevok") !Global("LS#SarevokRomanceActive","GLOBAL",2) !Alignment("Sarevok",MASK_EVIL)~
+    REPLACE_TEXTUALLY ~IsValidForPartyDialog("Sarevok")
+Alignment("Sarevok",MASK_EVIL)~
+            ~IsValidForPartyDialog("Sarevok") !Global("LS#SarevokRomanceActive","GLOBAL",2) Alignment("Sarevok",MASK_EVIL)~
+  COMPILE_D_TO_DLG
+BUT_ONLY_IF_IT_CHANGES
+
+
+// Changing AR6200 (epilogues)
+COPY_EXISTING ~ar6200.bcs~ ~override~
+  DECOMPILE_BCS_TO_BAF
+    REPLACE_TEXTUALLY ~Global("SarevokBio","GLOBAL",0)~
+            ~Global("SarevokBio","GLOBAL",0) !Global("LS#SarevokRomanceActive","GLOBAL",2)~
+  COMPILE_BAF_TO_BCS
+BUT_ONLY_IF_IT_CHANGES
+
+
+// --------------------------------------
+// Dialogue
+// --------------------------------------
+// Compile dialogue
+COMPILE ~sarevokromance/dialogue/sarev25j.d~
+COMPILE ~sarevokromance/dialogue/anome25j.d~
+COMPILE ~sarevokromance/dialogue/bsarev25.d~
+COMPILE ~sarevokromance/dialogue/others.d~
+
+
+// --------------------------------------
+// Creatures
+// --------------------------------------
+// Tamoko wraith
+COPY ~sarevokromance/creatures/ls#tam25.cre~ ~override~
+  SAY NAME1 @3
+  SAY NAME2 @3
+  WRITE_EVALUATED_ASCII DIALOG          ~ls#tam25~ #8
+  WRITE_EVALUATED_ASCII DEATHVAR        ~ls#tam25~ #32
+  WRITE_EVALUATED_ASCII SCRIPT_OVERRIDE ~~       #8
+  
+
+// --------------------------------------
+// Scripts
+// --------------------------------------
+// Compile scripts
+COMPILE ~sarevokromance/scripts/ls#sarct.baf~
+EXTEND_BOTTOM ~sarev25.bcs~   ~sarevokromance/scripts/sarev25.baf~
+EXTEND_BOTTOM ~sarev25d.bcs~  ~sarevokromance/scripts/sarev25d.baf~
+EXTEND_BOTTOM ~anom25.bcs~    ~sarevokromance/scripts/anom25.baf~
+EXTEND_BOTTOM ~cut218g.bcs~   ~sarevokromance/scripts/ls#cut218.baf~
+EXTEND_TOP    ~ar6200.bcs~    ~sarevokromance/scripts/ar6200.baf~
+
+
+// --------------------------------------
+// Epilogues
+// --------------------------------------
+// Copy epilogues
+COPY ~sarevokromance/epilogues/ls#sarep.2da~ ~override/ls#sare1.2da~
+  REPLACE ~99999~ @4
+  
+COPY ~sarevokromance/epilogues/ls#sarep.2da~ ~override/ls#sare2.2da~
+  REPLACE ~99999~ @5
+  
+COPY ~sarevokromance/epilogues/ls#sarep.2da~ ~override/ls#sare3.2da~
+  REPLACE ~99999~ @6
+  
+COPY ~sarevokromance/epilogues/ls#sarep.2da~ ~override/ls#sare4.2da~
+  REPLACE ~99999~ @7
+
+
+// --------------------------------------
+// Compatibility
+// --------------------------------------
+// Romantic Encounters
+ACTION_IF MOD_IS_INSTALLED ~SETUP-RE.TP2~ 48 THEN BEGIN
+  EXTEND_BOTTOM ~sarev25.bcs~ ~sarevokromance/scripts/re.baf~
+END
+
+// Unfinished Business
+ACTION_IF MOD_IS_INSTALLED ~SETUP-UB.TP2~ 24 THEN BEGIN
+  EXTEND_BOTTOM ~sarev25.bcs~ ~sarevokromance/scripts/ub.baf~
+END
+
+
+// --------------------------------------
+// Audio
+// --------------------------------------
+// Copy audio
+COPY ~sarevokromance/audio/ls#blank.wav~ ~override~

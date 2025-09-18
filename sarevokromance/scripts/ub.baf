@@ -1,0 +1,8 @@
+IF
+    GlobalGT("LS#SarevokRomanceActive","GLOBAL",0)
+    Global("LS#SarevokUBVariableTurnoff","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("U!SRemorse","GLOBAL",3)
+    SetGlobal("LS#SarevokUBVariableTurnoff","GLOBAL",1)
+END

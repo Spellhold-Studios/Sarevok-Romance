@@ -1,0 +1,48 @@
+// Sarevok's new epilogues
+IF
+    Global("StartEndBios","AR6200",1)
+    InParty("Sarevok")
+    Global("SarevokBio","GLOBAL",0)
+    Global("PlayerChoseEssence","GLOBAL",1)
+    Global("LS#SarevokRomancePath","GLOBAL",2)
+THEN
+  RESPONSE #100
+    SetGlobal("SarevokBio","GLOBAL",1)
+    TextScreen("LS#SARE1")
+END
+
+IF
+    Global("StartEndBios","AR6200",1)
+    InParty("Sarevok")
+    Global("SarevokBio","GLOBAL",0)
+    Global("PlayerChoseEssence","GLOBAL",0)
+    Global("LS#SarevokRomancePath","GLOBAL",2)
+THEN
+  RESPONSE #100
+    SetGlobal("SarevokBio","GLOBAL",1)
+    TextScreen("LS#SARE2")
+END
+
+IF
+    Global("StartEndBios","AR6200",1)
+    InParty("Sarevok")
+    Global("SarevokBio","GLOBAL",0)
+    Global("PlayerChoseEssence","GLOBAL",1)
+    Global("LS#SarevokRomancePath","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobal("SarevokBio","GLOBAL",1)
+    TextScreen("LS#SARE3")
+END
+
+IF
+    Global("StartEndBios","AR6200",1)
+    InParty("Sarevok")
+    Global("SarevokBio","GLOBAL",0)
+    Global("PlayerChoseEssence","GLOBAL",0)
+    Global("LS#SarevokRomancePath","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobal("SarevokBio","GLOBAL",1)
+    TextScreen("LS#SARE4")
+END

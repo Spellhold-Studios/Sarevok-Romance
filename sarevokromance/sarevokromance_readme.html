@@ -1,0 +1,445 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <style type="text/css">
+    /*<![CDATA[*/
+    <!-- 
+      body {
+        margin: 0;
+        padding: 0;
+        cursor: default;
+        text-align: center;
+        color: #000;
+        background: #e3e3db url('http://spellholdstudios.net/images/sh_bg_main.jpg');
+      }
+      
+      #wrap {
+        text-align: left;
+        margin: 0 auto;
+        margin-top: 20px;
+        width: 88%;
+        font-family: Verdana, Tahoma, Arial, sans-serif;
+        font-size: 12px;
+        color: #333;
+      }
+      
+      #header {
+        text-align: center;
+        background: #e5e5e5;
+        border: 1px solid #781808;
+        border-top: 5px solid #781808;
+        border-bottom: 5px solid #781808;
+        padding: 5px 0 13px 0;
+      }
+      
+      #header .about {
+        margin: 7px 0 0 0;
+        padding: 0;
+        font-style: italic;
+        color: #555;
+      }
+      
+      #header .menu {
+        font-weight: bold;
+        margin: 0;
+        color: #999;
+      }
+      
+      #header .menu a:link,
+      #header .menu a:visited {
+        color: #333;
+      }
+      
+      #maindiv {
+        margin: 0 auto;
+        margin-top: -20px;
+        width: 80%;
+      }
+      
+      #maindiv .content {
+        counter-increment: kman;
+        counter-reset: h2;
+        background-color: #e8e8e6;
+        padding: 0 0 25px 0;
+        margin: 50px auto;
+        border-width: 1px 1px 4px 10px;
+        border-style: solid;
+        border-color: #781808;
+        position: relative;
+        display: block;
+      }
+      
+      #maindiv .content::before {
+        content: counter(kman, lower-roman);
+        font-size: 100%;
+        font-weight: bold;
+        text-align: center;
+        color: #eee;
+        background-color: #781808;
+        width: 35px;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        display: block;
+      }
+      
+      h2 {
+        display: block;
+        font-family: Verdana, Trebuchet MS, Arial, serif;
+        text-align: left;
+        text-indent: 30px;
+        padding: 0px;
+        margin: 20px 0 0 0;
+        border-bottom: dotted 2px #d0d0d0;
+        border-top: dotted 2px #d0d0d0;
+        background: #deded9;
+        font-size: 160%;
+      }
+      
+      h2::first-letter {
+        color: #781808;
+        background-color: transparent;
+      }
+      
+      #maindiv p {
+        font-size: 100%;
+        font-style: normal;
+        line-height: 150%;
+        padding: 0px;
+        margin: 10px auto;
+        width: 90%;
+        display: block;
+      }
+      
+      #maindiv address a:link,
+      #maindiv address a:visited {
+        font-weight: bold;
+        text-decoration: underline;
+        background-color: transparent;
+        color: #eaeaea !important;
+        padding-right: 5px;
+        padding-left: 6px;
+      }
+      
+      #maindiv address a:focus,
+      #maindiv address a:hover {
+        text-decoration: none;
+        color: #F1F1F1;
+        border: 0;
+      }
+      
+      #maindiv address a:active {
+        color: #fff;
+        text-decoration: line-through;
+        border: none;
+      }
+      
+      #maindiv address {
+        font-size: 95%;
+        font-style: normal;
+        font-weight: bold;
+        text-decoration: none;
+        color: #BBB;
+        background-color: #781808;
+        padding: 3px 0px 0px;
+        margin: 0px;
+        width: 100%;
+        position: absolute;
+        bottom: -1px;
+        left: 0px;
+        display: block;
+        text-align: right;
+      }
+      
+      #maindiv .important {
+        font-size: 95%;
+        font-family: Verdana;
+        text-align: left;
+        background-color: #F1F1F1;
+        border-top: solid 1px #aaa;
+        border-bottom: solid 1px #aaa;
+        border-left: solid 6px #aaa;
+        border-right: solid 6px #aaa;
+        padding: 10px;
+        margin: 20px auto;
+        width: 80%;
+        line-height: 160%;
+      }
+      
+      #maindiv .important::before {
+        display: none;
+      }
+      
+      #maindiv .important p {
+        font-size: 100%;
+        text-indent: 0px;
+        margin: 5px 0 10px 0;
+      }
+      
+      #maindiv ul {
+        margin: -10px 0 0 30px;
+        *margin-left: 65px;
+      }
+      
+      #maindiv ol {
+        margin: -10px 0 0 35px;
+        *margin-left: 70px;
+      }
+      
+      #maindiv .important ul {
+        margin: -10px 0 0 15px;
+      }
+      
+      #maindiv .important ol {
+        margin: -10px 0 0 20px;
+      }
+      
+      #maindiv ul li {
+        list-style-type: square;
+        line-height: 150%;
+      }
+      
+      #maindiv ol li {
+        line-height: 150%;
+      }
+      
+      .t1 {
+        font-weight: bold;
+        width: 26%;
+        text-align: right;
+        clear: right;
+        float: left;
+        *float: none;
+        *margin-left: 65px;
+        line-height: 22px;
+      }
+      
+      .t2 {
+        text-align: left;
+        width: 73%;
+        float: right;
+        *float: none;
+        line-height: 22px;
+      }
+      
+      hr {
+        margin: 10px 0 10px 0;
+        padding: 0;
+        height: 1px;
+        border: 0;
+        color: #aaa;
+        background-color: #aaa;
+      }
+      
+      hr.floatfix {
+        clear: both;
+        color: #e8e8e6;
+        background-color: #e8e8e6;
+        *margin: 0;
+        *padding: 0;
+      }
+      
+      h1 {
+        font-size: 225%;
+        color: #444;
+        padding: 5px 0 5px 0;
+        margin: 0;
+        width: 100%;
+      }
+      
+      h3,
+      h4,
+      h5 {
+        margin: 10px 40px 10px 40px;
+        padding: 0;
+      }
+      
+      h3 {
+        font-size: 125%;
+        font-style: italic;
+      }
+      
+      h4 {
+        font-size: 125%;
+      }
+      
+      h5 {
+        font-size: 100%;
+      }
+      
+      h6 {
+        width: 100%;
+        margin: 10px 0 15px 0;
+        background-color: #ECECEC;
+        text-align: left;
+        text-indent: 30px;
+        font-size: 100%;
+        font-style: italic;
+        padding-top: 1px;
+        padding-bottom: 1px;
+        border-bottom: solid 1px #bbb;
+        border-top: solid 1px #bbb;
+      }
+      
+      a:link,
+      a:visited {
+        color: #781808;
+        font-weight: bold;
+        text-decoration: none;
+      }
+
+      a:hover,
+      a:active {
+        color: #222;
+        border-bottom: 1px solid black;
+      }
+
+    -->
+    /*]]>*/
+    </style>
+    <title>SPELLHOLD STUDIOS - Sarevok Romance</title>
+  </head>
+  <body>
+    <a name="top" id="top"></a>
+    <div id="wrap">
+
+      <div id="header">
+        <h1>Sarevok Romance</h1>
+        <strong>A Spellhold Studios mod for Baldur's Gate 2: ToB</strong>
+        <hr />
+        <p class="about">
+          Author: Rebecca/Aeryn
+        </p>
+        <p class="about">
+          <a href="http://www.spellholdstudios.net/ie/sarevokromance">Mod Website</a> &#8226;
+          <a href="http://www.shsforums.net/index.php?showforum=581">Mod Forum</a> &#8226;
+          Version: 1.4
+        </p>
+        <hr />
+        <p class="menu">
+          <a href="#intro">Requirements</a> &middot;
+          <a href="#installation">Installation</a> &middot;
+          <a href="#faq">FAQ</a> &middot;
+          <a href="#credits">Credits</a> &middot;
+          <a href="#version">Version History</a>
+        </p>
+      </div>
+      <div id="maindiv">
+
+        <!-- ================== R e q u i r e m e n t s ================== -->
+        <a name="intro" id="intro"></a>
+        <div class="content">
+          <h2>Requirements</h2>
+          <p>REQUIREMENTS:
+            <ul>
+              <li>Female</li>
+              <li>Elf, half-elf, human</li>
+              <li>13+ STR or INT</li>
+              <li>11+ CHA</li>
+            </ul>
+          </p>
+          <p>Visit the <a href="http://www.spellholdstudios.net/ie/sarevokromance">website</a> or <a href="http://www.shsforums.net/index.php?showforum=581">forum</a> for all the latest updates.</p>
+          <address>
+            <span class="footer">Sarevok Romance &gt; Requirements</span> &#8226;<a href="#top">BACK TO TOP</a>
+          </address>
+        </div>
+
+        <!-- ================== I n s t a l l a t i o n ================== -->
+        <a name="installation" id="installation"></a>
+        <div class="content">
+          <h2>Installation</h2>
+          <h5>PC</h5>
+          <p>Sarevok Romance is a WeiDU mod, packaged in an extractable .RAR archive. Simply unrar <em>"sarevokromance_v1.rar"</em> (<a href="http://www.rarlabs.com">WinRAR</a>) into your Baldur's Gate II directory (usually "C:\Program Files\Black Isle\BGII - SoA" or "C:\Program Files (x86)\Black Isle\BGII - SoA")and run <em>"setup-sarevokromance.exe"</em>.
+          <p>To uninstall, run <em>"setup-sarevokromance.exe"</em> again and select the uninstall option.</p>
+          <h5>Compatibility and Installation Order</h5>
+          <p>We have done our best to test extensively, and this mod should be compatible with any othemod. Please report any suspected conflicts and we will do our best to make everything work together smoothly. If you do encounter an error, please post on the <a href="http://www.shsforums.net/index.php?showforum=581">forums</a>.</p>
+          <p>Although it is not required for Sarevok Romance to function properly, it is always a good idea install the latest version of the <a href="http://www.gibberlings3.net/bg2fixpack/">BG2 Fixpack</a>.</p>
+          <address>
+            <span class="footer">Sarevok Romance &gt; Installation</span> <a href="#top">BACK TO TOP</a>
+          </address>
+        </div>
+
+        <!-- ================== F A Q ================== -->
+        <a name="faq" id="faq"></a>
+        <div class="content">
+          <h2>Frequently Asked Questions</h2>
+          <p><strong>Q: So, what's the rating of the material in this mod?</strong><br />A: The most suggestive content is probably equivalent to a PG-13 rating. Most, if not all of this material can be avoided through PC choices.</p>
+          <p><strong>Q: Sarevok's not saying anything. What's wrong?</strong><br />A: To begin the romance, the PC must talk to Sarevok.</p>
+          <p><strong>Q: Hey, I somehow ended the romance, and now I can't turn it back on! What gives?</strong><br />A: While the romance can be disabled at any point by talking to Sarevok, there is NO way to turn the romance back on after it has been disabled or ended. Sarevok is not a yo-yo. I recommend saving fairly often.</p>
+          <p><strong>Q: Is there any content for SoA?</strong><br />A: No, this mod is for ToB only.</p>
+          <p><strong>Q: Can I use my SoA character?</strong><br />A:  Either a new game with a fresh character or an existing character from an old game should work just fine.</p>
+          <p><strong>Q: Do I have to play through Watcher's Keep?</strong><br />A:  No, but there are additional dialogs specific to that dungeon. It is extra and in no way required.</p>
+          <p><strong>Q: Whoa, Sarevok's alignment didn't change! What did I do wrong?</strong><br />A: Nothing. Sarevok does not undergo a change of alignment within this romance no matter what the PC does or says. That is normal.</p>
+          <p><strong>Q: How often should I check the "Do you have a moment to talk?" list for new talks?</strong><br />A: All of the talks are related to progression through the main story line, so I
+suggest checking the list after major events. The talks will not disappear until they have been discussed, however, so there is no need to worry about missing one if you wait or forget.</p>
+          <address>
+            <span class="footer">Sarevok Romance &gt; FAQ</span> &#8226;<a href="#top">BACK TO TOP</a>
+          </address>
+        </div>
+
+        <!-- ================== C r e d i t s ================== -->
+        <a name="credits" id="credits"></a>
+        <div class="content">
+
+          <h2>Credits</h2>
+          <p>Special thanks to EpitomyofShyness and Allesia for extensive proofreading. Also, my sincere thanks to everyone who contributed ideas, thoughts, criticisms, encouragements and everything in between. It's because of you that this mod came about.</p>
+          <span class="t1">Author:</span> <span class="t2">Rebecca/Aeryn</span><br />
+          <span class="t1">Coder:</span> <span class="t2">Liam/K'aeloree</span><br />
+          <span class="t1">Testing:</span> <span class="t2">Cal Jones, EpitomyofShyness, Orthodoxia</span><br />
+          <hr class="floatfix" />
+          <h5>Programs/tools used in creation:</h5><br />
+          <ul>
+            <li><a href="http://www.weidu.org">WeiDU</a>, by Westley Weimer/Valerio Bigiani (the bigg)</li>
+            <li><a href="http://www.idi.ntnu.no/~joh/ni/">Near Infinity</a>, by Jon Olav Hauglid</li>
+            <li><a href="http://forums.gibberlings3.net/index.php?showforum=137">DLTCEP</a>, by Avenger<li>
+            <li><a href="http://www.rarlab.com/">WinRAR</a>, by Eugene Roshal/Alexander Roshal</li>
+            <li><a href="http://iesdp.gibberlings3.net">IESDP</a>, maintained by igi</li>
+          </ul>
+          <h5>Copyright Notice:</h5>
+          <div class="important">
+            <p>The Sarevok Romance mod was created to be freely enjoyed by all Baldur's Gate II players. However, this program may not be sold, published, compiled or redistributed in any form without the consent of its author.</p>
+            <p>The Sarevok Romance mod was not developed, supported, or endorsed by BioWare or Interplay/Black Isle.</p>
+          </div>
+          <address>
+            <span class="footer">Sarevok Romance &gt; Credits</span> &#8226;<a href="#top">BACK TO TOP</a>
+          </address>
+        </div>
+
+        <!-- ================== V e r s i o n   H i s t o r y ================== -->
+        <a name="version" id="version"></a>
+
+        <div class="content">
+          <h2>Version history</h2>
+          <h6>13 September 2019 - Version 1.4:</h6>
+          <ul>
+            <li>Added Russian translation by HelenAzura, Dajdre, Larite & Arcanecoast.ru</li>
+            <li>Updated to WeiDU v246</li>
+          </ul>
+          <h2>Version history</h2>
+          <h6>4 January 2018 - Version 1.3:</h6>
+          <ul>
+            <li>Added Polish translation by <a href="http://athkatla.cob-bg.pl/viewtopic.php?t=7502">Astharoshe, member of Stars of Mystra</a></li>
+            <li>Added HANDLE_CHARSET</li>
+            <li>Added EET for game check</li>
+            <li>Updated to WeiDU v241</li>
+          </ul>
+          <h6>28 December 2010 - Version 1.1:</h6>
+          <ul>
+            <li>Text fixes</li>
+            <li>TRAified</li>
+            <li>Updated to WeiDU v226</li>
+          </ul>
+          <h6>19 July 2009 - Version 1.0:</h6>
+          <ul>
+            <li>Initial release</li>
+          </ul>
+          <address>
+            <span class="footer">Sarevok Romance &gt; Version History</span> &#8226;<a href="#top">BACK TO TOP</a>
+          </address>
+        </div>
+
+      </div>
+    </div>
+  </body>
+
+</html>
